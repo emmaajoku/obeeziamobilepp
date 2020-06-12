@@ -1,0 +1,17 @@
+{
+  "name": "obeezi",
+  "displayName": "obeezi",
+  "expo": {
+    "name": "obeezi",
+    "slug": "obeezi",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

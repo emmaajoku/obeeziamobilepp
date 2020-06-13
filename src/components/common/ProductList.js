@@ -131,8 +131,8 @@ const ProductList = ({
           onEndReachedThreshold={0.1}
           ListHeaderComponent={renderHeader}
           ListFooterComponent={renderFooter}
-          numColumns={gridColumnsValue ? 1 : 2}
-          key={(gridColumnsValue) ? 'ONE COLUMN' : 'TWO COLUMNS'}
+          numColumns={gridColumnsValue ? 2 : 2}
+          key={(gridColumnsValue) ? 'TWO COLUMN' : 'TWO COLUMNS'}
           ItemSeparatorComponent={renderItemSeparator}
         />
       );
@@ -160,7 +160,10 @@ const styles = StyleSheet.create({
     flex: 1,
   }),
   container: {
+    justifyContent: 'center',
     flex: 1,
+    margin: 5,
+    paddingTop: (Platform.OS) === 'ios' ? 20 : 0
   },
   notFoundTextWrap: {
     flex: 1,
@@ -172,44 +175,49 @@ const styles = StyleSheet.create({
   infoStyle: {
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
   },
   textStyle: {
     justifyContent: 'center',
     textAlign: 'center',
     flexDirection: 'column',
     marginTop: 0,
+    fontSize: 16,
     padding: 0,
+    fontWeight: '200',
+    color: '#555',
   },
   imageStyle: {
     flex: 1,
   },
   columnContainerStyle: {
     flexDirection: 'column',
+    borderBottomWidth: 0,
   },
   headerContainerStyle: theme => ({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'stretch',
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: '#D4D5D7',
   }),
   iconWrapper: theme => ({
     flex: 1,
     height: 32,
-    margin: theme.spacing.small,
+    margin: 8,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   }),
   headerTextStyle: theme => ({
+    color: '#545864',
     textTransform: 'uppercase',
-    marginLeft: theme.spacing.small,
+    marginLeft: 4,
   }),
   separator: theme => ({
     width: 1,
-    backgroundColor: theme.colors.border,
-    marginVertical: theme.spacing.small,
+    backgroundColor: '#D4D5D7',
+    marginTop: 8,
+    marginBottom: 8
   }),
 });
 

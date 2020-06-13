@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, Image} from 'react-native';
 import { Text } from './Text';
 import { Price } from './Price';
 import { getProductThumbnailFromAttribute } from '../../helper/product';
 import { ThemeContext } from '../../theme';
 import { finalPrice } from '../../helper/price';
-
+import Sizes from '../../constants/Sizes';
+import { Platform } from '@unimodules/core';
 const ProductListItem = ({
   product,
   onRowPress,
@@ -25,19 +26,19 @@ const ProductListItem = ({
   return (
     <View style={viewContainerStyle}>
       <TouchableOpacity
-        style={[styles.containerStyle(theme), columnContainerStyle]}
+        style={[styles.containerStyle, columnContainerStyle]}
         onPress={() => { onRowPress(product); }}
       >
 
         <Image
-          style={[styles.imageStyle(theme), imageStyle]}
+          style={[styles.imageStyle, imageStyle]}
           resizeMode="contain"
           source={{ uri: image() }}
         />
         <View style={[styles.infoStyle, infoStyle]}>
-          <Text type="subheading" style={[styles.textStyle(theme), textStyle]}>{product.name}</Text>
+          <Text type="subheading" style={[styles.textStyle, textStyle]}>{product.name}</Text>
           <Price
-            style={styles.textStyle(theme)}
+            style={styles.textStyle}
             basePrice={product.price}
             discountPrice={finalPrice(product.custom_attributes, product.price)}
             currencyRate={currencyRate}
@@ -82,27 +83,38 @@ ProductListItem.defaultProps = {
 };
 
 const styles = {
-  containerStyle: theme => ({
-    flexDirection: 'row',
+  container: {
+    padding: 5,
+    width: Sizes.WINDOW_WIDTH * 0.32,
+  },
+  containerStyle:{
+    flexDirection: 'column',
     flex: 1,
-    backgroundColor: theme.colors.surface,
-  }),
+    borderWidth: 1,
+    borderColor: '#ddd',
+    backgroundColor: '#fff',
+    borderRadius: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: Sizes.WINDOW_WIDTH * 0.50,
+  },
   infoStyle: {
     flexDirection: 'column',
     justifyContent: 'center',
-    flex: 2,
+    flex:0.5,
   },
-  textStyle: theme => ({
-    padding: theme.spacing.small,
-    marginBottom: theme.spacing.medium,
-  }),
-  imageStyle: theme => ({
-    height: theme.dimens.productListItemImageHeight,
-    margin: theme.spacing.small,
-    borderWidth: 1,
-    borderColor: theme.colors.border,
-    width: null,
-  }),
+  textStyle:{
+    justifyContent: 'center',
+    textAlign: 'center',
+    marginTop: 10,
+    fontSize: 12,
+    fontWeight: '200',
+    color: '#555',
+  },
+  imageStyle:{
+    height:  Platform === 'ios' ? 180 : 180,
+    width: 160,
+  },
 };
 
 export { ProductListItem };

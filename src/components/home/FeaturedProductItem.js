@@ -6,7 +6,7 @@ import { getProductThumbnailFromAttribute } from '../../helper/product';
 import { ThemeContext } from '../../theme';
 import { finalPrice } from '../../helper/price';
 import { useSelector } from 'react-redux';
-
+import Sizes from '../../constants/Sizes';
 const FeaturedProductItem = ({
   onPress,
   currencySymbol,
@@ -26,16 +26,16 @@ const FeaturedProductItem = ({
   );
    useEffect(
     () => setThemeStyle({
-      image: styles.imageStyle(theme),
-      text: styles.textStyle(theme),
+      image: styles.imageStyle,
+      text: styles.textStyle,
     }),
     [theme]
   );
 
   return (
-    <View style={styles.container(theme)}>
+    <View style={styles.container}>
       <TouchableOpacity
-        style={styles.containerStyle(theme)}
+        style={styles.containerStyle}
         onPress={() => { onPress(product); }}
       >
         <Image
@@ -65,38 +65,43 @@ const FeaturedProductItem = ({
 };
 
 const styles = StyleSheet.create({
-  container: theme => ({
-    padding: theme.spacing.tiny,
-    width: theme.dimens.WINDOW_WIDTH * 0.32,
-  }),
-  containerStyle: theme => ({
+  container:{
+    padding: 5,
+    width: Sizes.WINDOW_WIDTH * 0.45,
+  },
+  containerStyle: {
     flexDirection: 'column',
     flex: 1,
     borderWidth: 1,
-    borderColor: theme.colors.border,
-    backgroundColor: theme.colors.surface,
-    borderRadius: theme.dimens.borderRadius,
+    borderColor: '#ddd',
+    backgroundColor: '#fff',
+    borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
-  }),
+  },
   infoStyle: {
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
-  textStyle: theme => ({
+  textStyle:{
     justifyContent: 'center',
     textAlign: 'center',
     flexDirection: 'column',
-    marginTop: theme.spacing.small,
-  }),
+    marginTop: 15,
+    fontSize: 11,
+    fontWeight: '200',
+    color: '#555',
+  },
   priceStyle: {
+    fontSize: 13,
+    fontWeight: '200',
     textAlign: 'center',
   },
-  imageStyle: theme => ({
-    height: theme.dimens.homeProductImageHeight,
-    width: theme.dimens.homeProductImageWidth,
-  }),
+  imageStyle: {
+    height: 110,
+    width: 110
+  },
 });
 
 FeaturedProductItem.propTypes = {

@@ -4,7 +4,8 @@ import { View, StyleSheet, FlatList } from 'react-native';
 import { Text } from '../common';
 import FeaturedProductItem from './FeaturedProductItem';
 import { ThemeContext } from '../../theme';
-
+import { Platform } from '@unimodules/core';
+import Sizes from '../../constants/Sizes';
 const FeaturedProducts = ({
   style,
   title,
@@ -18,7 +19,7 @@ const FeaturedProducts = ({
   const keyExtractor = item => item.id.toString();
 
   return (
-    <View style={[styles.container(theme), style]}>
+    <View style={[styles.container, style]}>
       <Text type="heading" style={styles.title}>
         {title}
       </Text>
@@ -55,11 +56,12 @@ FeaturedProducts.defaultProps = {
 };
 
 const styles = StyleSheet.create({
-  container: theme => ({
-    height: theme.dimens.WINDOW_HEIGHT * 0.3,
+  container:{
+    height: Platform.OS === 'ios' ? Sizes.WINDOW_HEIGHT * 0.3 : Sizes.WINDOW_HEIGHT * 0.4,
     paddingTop: 10,
-  }),
+  },
   title: {
+    fontSize: 18,
     textAlign: 'center',
   },
 });

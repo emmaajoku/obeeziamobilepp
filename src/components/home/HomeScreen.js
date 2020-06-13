@@ -16,12 +16,14 @@ import FeaturedProducts from './FeaturedProducts';
 import NavigationService from '../../navigation/NavigationService';
 import { ThemeContext } from '../../theme';
 import { translate } from '../../i18n';
+import Sizes from '../../constants/Sizes';
+import HeaderLogo from './HeaderLogo'
 
 class HomeScreen extends Component {
   static contextType = ThemeContext;
 
   static navigationOptions = ({ navigation }) => ({
-    title: translate('home.title'),
+    headerTitle: <HeaderLogo/>,
     headerBackTitle: ' ',
     headerLeft: (
       <MaterialHeaderButtons>
@@ -82,7 +84,7 @@ class HomeScreen extends Component {
 
     return (
       <ScrollView
-        style={styles.container(theme)}
+        style={styles.container}
         refreshControl={(
           <RefreshControl
             refreshing={this.props.refreshing}
@@ -98,10 +100,19 @@ class HomeScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: theme => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
-  }),
+    backgroundColor: 'white',
+  },
+  button: {
+    padding: 10,
+  },
+  buttonStyle: {
+    marginTop: 10,
+    alignSelf: 'center',
+    width: Sizes.WINDOW_WIDTH * 0.9,
+    marginBottom: 3,
+  },
   errorContainer: {
     flex: 1,
     justifyContent: 'center',

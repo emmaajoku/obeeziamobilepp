@@ -112,7 +112,7 @@ const styles = {
     color: '#555',
   },
   imageStyle:{
-    height:  Platform === 'ios' ? 180 : 180,
+    height:  Platform === 'ios' ? 180 : 170,
     width: 160,
   },
 };

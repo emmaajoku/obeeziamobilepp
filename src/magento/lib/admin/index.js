@@ -74,9 +74,6 @@ export default magento => ({
           field: 'visibility',
           value: '4',
           conditionType: 'eq',
-          field: 'status',
-          value: '1',
-          conditionType: 'eq',
         }],
       ],
     };

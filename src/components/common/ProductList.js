@@ -78,29 +78,29 @@ const ProductList = ({
   );
 
   const renderHeader = () => (
-    <View style={styles.headerContainerStyle(theme)}>
+    <View style={styles.headerContainerStyle}>
       <ModalSelector
-        style={styles.iconWrapper(theme)}
+        style={styles.iconWrapper}
         data={sortData}
         ref={(component) => { selector.current = component; }}
         customSelector={(
           <TouchableOpacity
-            style={styles.iconWrapper(theme)}
+            style={styles.iconWrapper}
             onPress={() => selector.current.open()}
           >
             <Icon name="sort" size={24} color="#95989F" />
-            <Text style={styles.headerTextStyle(theme)}>{translate('common.sort')}</Text>
+            <Text style={styles.headerTextStyle}>{translate('common.sort')}</Text>
           </TouchableOpacity>
         )}
         onChange={option => performSort(option.key)}
       />
-      <View style={styles.separator(theme)} />
+      <View style={styles.separator} />
       <TouchableOpacity
-        style={styles.iconWrapper(theme)}
+        style={styles.iconWrapper}
         onPress={() => navigation.toggleFilterDrawer()}
       >
         <Icon name="filter" size={24} color="#95989F" />
-        <Text style={styles.headerTextStyle(theme)}>{translate('common.filter')}</Text>
+        <Text style={styles.headerTextStyle}>{translate('common.filter')}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -113,7 +113,7 @@ const ProductList = ({
     return null;
   };
 
-  const renderItemSeparator = () => <View style={styles.itemSeparator(theme)} />;
+  const renderItemSeparator = () => <View style={styles.itemSeparator} />;
 
   const renderContent = () => {
     if (!products) {
@@ -193,32 +193,32 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     borderBottomWidth: 0,
   },
-  headerContainerStyle: theme => ({
+  headerContainerStyle: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'stretch',
     borderBottomWidth: 1,
     borderBottomColor: '#D4D5D7',
-  }),
-  iconWrapper: theme => ({
+  },
+  iconWrapper: {
     flex: 1,
     height: 32,
     margin: 8,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
-  }),
-  headerTextStyle: theme => ({
+  },
+  headerTextStyle: {
     color: '#545864',
     textTransform: 'uppercase',
     marginLeft: 4,
-  }),
-  separator: theme => ({
+  },
+  separator: {
     width: 1,
     backgroundColor: '#D4D5D7',
     marginTop: 8,
     marginBottom: 8
-  }),
+  },
 });
 
 ProductList.propTypes = {

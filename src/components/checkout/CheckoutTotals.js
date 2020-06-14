@@ -14,7 +14,7 @@ import {
   removeCouponFromCart,
   addCouponToCart,
 } from '../../actions';
-import { NAVIGATION_HOME_STACK_PATH } from '../../navigation/routes';
+import { NAVIGATION_HOME_STACK_PATH, NAVIGATION_CART_PATH } from '../../navigation/routes';
 import { Button, Spinner, Text, Price } from '../common';
 import { ThemeContext } from '../../theme';
 import { translate } from '../../i18n';
@@ -50,6 +50,10 @@ class CheckoutTotals extends Component {
 
   goHome = () => {
     this.props.navigation.navigate(NAVIGATION_HOME_STACK_PATH);
+  };
+
+  goCatePage = () => {
+    this.props.navigation.navigate(NAVIGATION_CART_PATH);
   };
 
   renderTotals() {
@@ -135,13 +139,13 @@ class CheckoutTotals extends Component {
     //   return <View />;
     // }
 
-    // if (this.props.loading) {
-    //   return (
-    //     <View style={styles.nextButtonStyle}>
-    //       <Spinner size="large" />
-    //     </View>
-    //   );
-    // }
+    if (this.props.loading) {
+      return (
+        <View style={styles.nextButtonStyle}>
+          <Spinner size="large" />
+        </View>
+      );
+    }
     return (
       <View style={styles.nextButtonStyle}>
         <Button
@@ -184,7 +188,7 @@ class CheckoutTotals extends Component {
     Alert.alert(
       title,
       message,
-      [{ text: translate('common.ok'), onPress: () => this.goHome() }],
+      [{ text: translate('common.ok'), onPress: () => this.goCatePage() }],
       { cancelable: false },
     );
   }

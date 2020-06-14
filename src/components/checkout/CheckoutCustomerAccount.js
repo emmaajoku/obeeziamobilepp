@@ -20,7 +20,9 @@ class CheckoutCustomerAccount extends Component {
   componentDidMount() {
     this.props.getCountries();
     // Hardcode US
-    // this.props.updateCheckoutUI('countryId', 'US');
+    this.props.updateCheckoutUI('countryId', 'NG');
+    this.props.updateCheckoutUI('postcode', '100001');
+    this.props.updateCheckoutUI('city', 'Lagos Mainland');
     // Clear the error
     this.props.updateCheckoutUI('error', false);
     // Clear loading
@@ -237,17 +239,17 @@ class CheckoutCustomerAccount extends Component {
       key: value.id,
     }));
 
-    return (
-      <ModalSelect
-        disabled={data.length === 0}
-        key="countries"
-        label={translate('common.country')}
-        attribute={translate('common.country')}
-        value={translate('common.country')}
-        data={data}
-        onChange={this.countrySelect.bind(this)}
-      />
-    );
+    // return (
+    //   <ModalSelect
+    //     disabled={data.length === 0}
+    //     key="countries"
+    //     label={translate('common.country')}
+    //     attribute={translate('common.country')}
+    //     value={translate('common.country')}
+    //     data={data}
+    //     onChange={this.countrySelect.bind(this)}
+    //   />
+    // );
   }
 
   renderUser() {
@@ -265,13 +267,13 @@ class CheckoutCustomerAccount extends Component {
           onChangeText={value => this.updateUI('email', value)}
         />
 
-        <Input
+        {/* <Input
           secureTextEntry
           label={translate('common.password')}
           value={this.props.password}
           placeholder={translate('common.password')}
           onChangeText={value => this.updateUI('password', value)}
-        />
+        /> */}
 
         <Input
           label={translate('common.firstName')}
@@ -299,13 +301,13 @@ class CheckoutCustomerAccount extends Component {
         {this.renderCountries()}
 
         {this.renderRegions()}
-
+{/* 
         <Input
           label={translate('common.postcode')}
           value={this.props.postcode}
           placeholder={translate('common.postcode')}
           onChangeText={value => this.updateUI('postcode', value)}
-        />
+        /> */}
 
         <Input
           label={translate('common.street')}
@@ -314,12 +316,12 @@ class CheckoutCustomerAccount extends Component {
           onChangeText={value => this.updateUI('street', value)}
         />
 
-        <Input
+        {/* <Input
           label={translate('common.city')}
           value={this.props.city}
           placeholder={translate('common.city')}
           onChangeText={value => this.updateUI('city', value)}
-        />
+        /> */}
 
         <Input
           label={translate('common.telephone')}

@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   infoStyle: {
     flexDirection: 'column',
     justifyContent: 'center',
-    // alignItems: 'center',
+    alignItems: 'center',
   },
   textStyle:{
     justifyContent: 'center',
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   imageStyle: {
-    height: 110,
+    height: 120,
     width: 110
   },
 });

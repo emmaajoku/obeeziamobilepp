@@ -14,7 +14,7 @@
     "expo-splash-screen": "^0.2.3",
     "expo-updates": "~0.2.0",
     "i18n-js": "^3.3.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "prop-types": "^15.6.0",
     "react": "~16.9.0",
